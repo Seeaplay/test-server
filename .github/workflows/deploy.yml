@@ -10,7 +10,7 @@ on: # 条件
       - "bin/*"
       - "package.json"
 
-jobs: # 命令
+jobs: # 任务
   deploy: # 任务，名字可以自定义，任务都是在临时的虚拟机服务器上运行的
     runs-on: ubuntu-latest # centos 一样，也是linux发行版
 
