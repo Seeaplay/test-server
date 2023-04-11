@@ -1,0 +1,31 @@
+name: deploy myblog
+
+on: # 条件
+  push:
+    branches:
+      - "main" # 针对的是 main 分支，main 分支下 push的时候，触发下面写的东西
+    paths: # 那些文件被更改了，才触发
+      - ".github/workflows/*"
+      - "src/**"
+      - "bin/*"
+      - "package.json"
+
+jobs: # 命令
+  deploy: # 任务，名字可以自定义，任务都是在临时的虚拟机服务器上运行的
+    runs-on: ubuntu-latest # centos 一样，也是linux发行版
+
+    steps: # 步骤
+      - uses: actions/checkout@v2 # 第三方的 action，拉取git仓库中所有代码
+
+      - name: create a folder # 创建文件夹
+        run: mkdir test-folder
+
+      - name: create a file #创建一个文件
+        run: | # 写多行命令
+          cd test-folder
+          touch a.txt
+          echo "hello world" > a.txt
+          cat a.txt
+
+      - name: delete a file # 删除文件
+        run: rm -rf a.txt
