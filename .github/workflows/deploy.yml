@@ -4,7 +4,7 @@ name: deploy myblog
 on:
   push:
     branches:
-      - "main" # 针对的是 main 分支，main 分支下 push的时候，触发下面写的东西
+      - "master" # 针对的是 master 分支，master 分支下 push的时候，触发下面写的东西
     paths: # 那些文件被更改了，才触发
       - ".github/workflows/*"
       - "src/**"
