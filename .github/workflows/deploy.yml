@@ -1,6 +1,7 @@
 name: deploy myblog
 
-on: # 条件
+# 条件
+on:
   push:
     branches:
       - "main" # 针对的是 main 分支，main 分支下 push的时候，触发下面写的东西
