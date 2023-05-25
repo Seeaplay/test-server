@@ -27,10 +27,6 @@ jobs: # 任务
           echo "---------------bbbbbbbbbb--------------"
           chmod 600 ~/.ssh/id_rsa
           echo "---------------cccccccccc--------------"
-          touch ~/.ssh/known_hosts
-          echo "---------------ddddddddddd--------------"
-          chmod 600 ~/.ssh/known_hosts
-          echo "---------------eeeeeeeeeee--------------"
           ssh-keyscan 192.168.30.133 >> ~/.ssh/known_hosts
           echo "end..."
 
