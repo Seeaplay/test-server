@@ -20,10 +20,15 @@ jobs: # 任务
 
       - name: set id_rsa # 设置 id_rsa
         run: |
+          echo "start..."
           mkdir -p ~/.ssh/
+          echo "---------------aaaaaaaaaa--------------"
           echo "${{secrets.MY_ID_RSA}}" -> ~/.ssh/id_rsa
+          echo "---------------bbbbbbbbbb--------------"
           chmod 600 ~/.ssh/id_rsa
+          echo "---------------cccccccccc--------------"
           ssh-keyscan 192.168.30.133 >> ~/.ssh/known_hosts
+          echo "end..."
 
       - name: deploy # 自动发布
         run: |
