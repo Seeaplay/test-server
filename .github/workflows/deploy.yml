@@ -16,7 +16,7 @@ jobs: # 任务
     runs-on: ubuntu-latest # centos 一样，也是linux发行版
 
     steps: # 步骤
-      - uses: actions/checkout@v2 # 第三方的 action，拉取git仓库中所有代码
+      - uses: actions/checkout@v3 # 第三方的 action，拉取git仓库中所有代码
 
       - name: set id_rsa # 设置 id_rsa
         run: |
