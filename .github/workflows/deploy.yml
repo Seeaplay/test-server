@@ -23,8 +23,7 @@ jobs: # 任务
           mkdir -p ~/.ssh/
           echo "${{secrets.MY_ID_RSA}}" -> ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          echo "-------fengexian--------"
-          # ssh-keyscan 192.168.30.133 >> ~/.ssh/known_hosts
+          ssh-keyscan 192.168.30.133 >> ~/.ssh/known_hosts
 
       - name: deploy # 自动发布
         run: |
