@@ -25,7 +25,7 @@ jobs: # 任务
       #     chmod 600 ~/.ssh/id_rsa
       #     ssh-keyscan 192.168.30.133 >> ~/.ssh/known_hosts
 
-      name: Deploy
+      - name: Deploy
         uses: appleboy/ssh-action@master
         with:
           host: 192.168.30.133
@@ -33,6 +33,13 @@ jobs: # 任务
           password: 123123
           port: 22
           script: |
+            echo "陈宫----------"
+
+      - name: deploy # 自动发布
+        run: |
+          ssh root@192.168.30.133 "
+            # 注意：服务器已经 git clone 代码到 /root/myblog/test-server 目录
+
             cd /root/myblog/test-server
             git checkout . ;
             git checkout master;
@@ -41,21 +48,7 @@ jobs: # 任务
             # 重启服务
             npm install;
             npm run prd;
-
-      # - name: deploy # 自动发布
-      #   run: |
-      #     ssh root@192.168.30.133 "
-      #       # 注意：服务器已经 git clone 代码到 /root/myblog/test-server 目录
-
-      #       cd /root/myblog/test-server
-      #       git checkout . ;
-      #       git checkout master;
-      #       git pull origin master;   # 重新下载最新的代码
-
-      #       # 重启服务
-      #       npm install;
-      #       npm run prd;
-      #     "
+          "
 
       - name: delete id_rsa #删除 id_rsa
         run: rm -rf ~/.ssh/id_rsa
