@@ -25,15 +25,13 @@ jobs: # 任务
       #     chmod 600 ~/.ssh/id_rsa
       #     ssh-keyscan 192.168.30.133 >> ~/.ssh/known_hosts
 
-      - name: Deploy
-        uses: appleboy/ssh-action@master
+      - id: ssh
+        uses: invi5H/ssh-action@v1
         with:
-          host: 192.168.30.133
-          username: CentOS
-          password: 123123
-          port: 22
-          script: |
-            echo "陈宫----------"
+          SSH_HOST: 192.168.30.133
+          SSH_PORT: 22
+          SSH_USER: root
+      - run: ssh ${{ steps.ssh.outputs.SERVER }} pwd
 
       - name: deploy # 自动发布
         run: |
